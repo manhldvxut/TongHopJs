@@ -63,3 +63,32 @@ $('.checkKatakana').on('keydown keyup keypress change focus blur', function() {
         $(this).css(changerColor)
       }
 }).change()
+
+
+
+
+// sticky js
+
+$(window).on('scroll',function() {
+    if ($('#form_cart').length) {
+       
+        var side = $(".ec-cartRole__actions-stickjs"), // BOX STICKY
+            wrap = $("#form_cart"), // BOX CONTENT
+            min_move = wrap.offset().top,
+            max_move = wrap.height(),
+            margin_bottom = max_move - min_move;
+
+            console.log(min_move)
+
+        var scrollTop = $(window).scrollTop();
+        if (scrollTop > min_move && scrollTop < max_move) {
+            var margin_top = scrollTop - min_move;
+            side.css({"margin-top": margin_top + 140});
+        } else if (scrollTop < min_move) {
+            side.css({"margin-top": 0});
+        } else if (scrollTop > max_move) {
+            side.css({"margin-top": margin_bottom});
+        }
+
+    }
+})
